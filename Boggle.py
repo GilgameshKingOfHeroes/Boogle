@@ -65,6 +65,10 @@ def createBoard():
     shuffle(board)
     return board
 
+#def validation(tokens):
+    #if
+
+
 def main():
     board = createBoard()
     printBoard(board)
