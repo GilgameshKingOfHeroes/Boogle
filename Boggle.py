@@ -1,4 +1,5 @@
 from random import randint, shuffle
+from arrayutils import arrayCopy, arrayCheck
 
 DICE = [
     ['A','A','E','E','G','N'],
@@ -65,6 +66,29 @@ def createBoard():
     shuffle(board)
     return board
 
+def rec_find_on_board(board, tokens, visited, possibles):
+    word_idx = len(visited)
+    if word_idx == len(tokens):
+        return True
+    word_token = tokens[word_idx]
+    for board_idx in possibles:
+        board_token = board[board_idx]
+        if word_token == board_token and not arrayCheck(visited, board_idx):
+            nex_vis = arrayCopy(visited)
+            nex_vis.append(board_idx)
+            nex_pos = []
+            nex_pos.append(divmod())
+            found = rec_find_on_board(board, tokens, nex_vis, nex_pos)
+            if found:
+                return True
+
+    return False
+
+
+def find_on_board(board, tokens):
+    return rec_find_on_board(board, tokens, [], [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])
+
+
 #def validation(tokens):
     #if
 
@@ -74,5 +98,6 @@ def main():
     printBoard(board)
     player_word = input('Whats the good word? ')
     tokens, is_valid = tokenize(player_word)
-    print(tokens)
+    if is_valid:
+        find_on_board(board, word_token)
 main()
