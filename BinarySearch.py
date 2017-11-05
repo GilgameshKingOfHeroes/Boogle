@@ -1,6 +1,3 @@
-from arrayutils import arrayCopy, arrayCheck
-import time
-
 def findBreak(array, word):
     return breakArray(array, word, 0, len(array))
 def breakArray(array, check, start, end):
@@ -16,11 +13,11 @@ def breakArray(array, check, start, end):
         return breakArray(array, check, mid+1, end)
     else:
         return breakArray(array, check, start, mid)
-
 def main():
-    with open("twl06.txt") as f:
-        lexicon = f.read().splitlines()
-    print(findBreak(lexicon, 'goo'))
+    if __name__ == "__name__":
+        with open("twl06.txt") as f:
+            lexicon = f.read().splitlines()
+        print(findBreak(lexicon, 'goo'))
 
 
 main()

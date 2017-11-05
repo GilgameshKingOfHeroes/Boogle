@@ -1,5 +1,6 @@
 from random import randint, shuffle
 from arrayutils import arrayCopy, arrayCheck
+from BinarySearch import findBreak, breakArray
 
 DICE = [
     ['A','A','E','E','G','N'],
@@ -19,7 +20,8 @@ DICE = [
     ['H','I','M','N','U','Qu'],
     ['H','L','N','N','R','Z']
         ]
-
+with open("twl06.txt") as f:
+    lexicon = f.read().splitlines()
 def tokenize(player_word):
     tokens = []
     is_valid = True
@@ -38,7 +40,7 @@ def tokenize(player_word):
                 tokens.append('qu')
                 word_idx +=1
         else:
-            tokens.append(word_char.upper())
+            tokens.append(word_char.lower())
     return tokens, is_valid
 
 def printBoard(board):
@@ -77,20 +79,22 @@ def rec_find_on_board(board, tokens, visited, possibles):
             nex_vis = arrayCopy(visited)
             nex_vis.append(board_idx)
             nex_pos = []
-            nex_pos.append(divmod())
             found = rec_find_on_board(board, tokens, nex_vis, nex_pos)
             if found:
                 return True
 
     return False
 
+def compute_next_possibles(cur_idx):
+    if cur_idx % 4 == 0:
+        cur_idx - 4, cur_idx + 4
+        cur_idx - 3, cur_idx + 1, cur_idx + 5
+    elif cur_idx % 4 == 3:
+        cur_idx - 4, cur_idx + 4
+        cur_idx - 5, cur_idx - 1, cur_idx + 3
 
 def find_on_board(board, tokens):
     return rec_find_on_board(board, tokens, [], [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])
-
-
-#def validation(tokens):
-    #ifCAP
 
 
 def main():
@@ -100,4 +104,5 @@ def main():
     tokens, is_valid = tokenize(player_word)
     if is_valid:
         find_on_board(board, player_word)
+        findBreak(lexicon, player_word)
 main()
