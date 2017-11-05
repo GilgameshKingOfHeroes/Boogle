@@ -4,10 +4,10 @@ def arrayCopy(ori):
         copy.append(i)
     return copy
 
-def arrayCheck(copy, answ_sheet):
+def arrayCheck(array, word):
     validation = False
-    for char in copy:
-        if char == answ_sheet:
+    for char in array:
+        if char == word:
             validation = True
             print("Correct! Monika is so proud of you!")
             return True

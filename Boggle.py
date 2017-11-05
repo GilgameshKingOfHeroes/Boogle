@@ -90,7 +90,7 @@ def find_on_board(board, tokens):
 
 
 #def validation(tokens):
-    #if
+    #ifCAP
 
 
 def main():
@@ -99,5 +99,5 @@ def main():
     player_word = input('Whats the good word? ')
     tokens, is_valid = tokenize(player_word)
     if is_valid:
-        find_on_board(board, word_token)
+        find_on_board(board, player_word)
 main()
