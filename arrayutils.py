@@ -11,8 +11,6 @@ def arrayCheck(array, word):
             validation = True
             print("Correct! Monika is so proud of you!")
             return True
-
-    print("This is the wrong word, try again")
     return False
 
 
