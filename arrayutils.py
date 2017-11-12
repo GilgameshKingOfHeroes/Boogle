@@ -9,7 +9,6 @@ def arrayCheck(array, word):
     for char in array:
         if char == word:
             validation = True
-            print("Correct! Monika is so proud of you!")
             return True
     return False
 
