@@ -11,12 +11,13 @@ def build_words(board, lexicon):
 def rec_build_a_word(board, lexicon, word, next_dice, visited_dice, found_words):
     if len(word) >= 3 and findBreak(lexicon, word) and word not in found_words:
         found_words.append(word)
+        print(word)
     for next_die in next_dice:
         token = board[next_die]
-        next_word = word + token
+        next_word = word + token.lower()
         if next_die not in visited_dice:
             next_vis = arrayCopy(visited_dice)
-            next_vis.append(next_dice)
+            next_vis.append(next_die)
             rec_build_a_word(board, lexicon, next_word, compute_next_possibles(next_die), next_vis, found_words)
 
 def main():

@@ -20,8 +20,10 @@ DICE = [
     ['H','I','M','N','U','Qu'],
     ['H','L','N','N','R','Z']
         ]
-with open("twl06.txt") as f:
-    lexicon = f.read().splitlines()
+def load_lexicon():
+    with open("twl06.txt") as f:
+        lexicon = f.read().splitlines()
+        return lexicon
 def tokenize(player_word):
     tokens = []
     is_valid = True
@@ -114,6 +116,7 @@ def find_on_board(board, tokens):
 def main():
     score_card = 0
     used_words = []
+    lexicon = load_lexicon()
     board = createBoard()
     while True:
         printBoard(board)
@@ -156,5 +159,5 @@ def main():
             print('Failed to tokenize: please contact tech support O_O')
     print("Nice job! Here's your total score:", score_card)
     print("Here are all of the words: ", used_words)
-
-main()
+if __name__ == "__main__":
+    main()
