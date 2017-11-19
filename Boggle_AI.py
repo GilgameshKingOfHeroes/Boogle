@@ -11,7 +11,6 @@ def build_words(board, lexicon):
 def rec_build_a_word(board, lexicon, word, next_dice, visited_dice, found_words):
     if len(word) >= 3 and findBreak(lexicon, word) and word not in found_words:
         found_words.append(word)
-        print(word)
     for next_die in next_dice:
         token = board[next_die]
         next_word = word + token.lower()
@@ -25,7 +24,6 @@ def main():
     lex = load_lexicon()
     printBoard(board)
     words = build_words(board, lex)
-    print(words)
 
 if __name__ == "__main__":
     main()
